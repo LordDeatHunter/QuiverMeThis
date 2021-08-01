@@ -1,0 +1,13 @@
+{
+  "item.quivermd.leather_quiver": "Leather Quiver",
+  "item.quivermd.iron_quiver": "Iron Quiver",
+  "item.quivermd.golden_quiver": "Golden Quiver",
+  "item.quivermd.diamond_quiver": "Diamond Quiver",
+  "item.quivermd.netherite_quiver": "Netherite Quiver",
+  "item.quivermd.dragon_quiver": "Dragon Quiver",
+
+  "tooltip.quivermd.stored_arrows": "Stored Arrows: ",
+
+  "itemGroup.quivermd.quivermd": "Quiver Me This"
+
+}

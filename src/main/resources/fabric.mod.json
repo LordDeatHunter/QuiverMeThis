@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "quivermd",
+  "version": "${version}",
+
+  "name": "QuiverMeThis",
+  "description": "",
+  "authors": [
+    "LordDeatHunter"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": "https://github.com/LordDeatHunter/QuiverMeThis"
+  },
+
+  "license": "MIT",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "wraith.quivermd.QuiverMD"
+    ]
+  },
+  "mixins": [
+    "quivermd.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  }
+}

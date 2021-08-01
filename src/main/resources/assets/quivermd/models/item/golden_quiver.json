@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/handheld",
+    "textures": {
+        "layer0": "quivermd:item/golden_quiver"
+    }
+}
