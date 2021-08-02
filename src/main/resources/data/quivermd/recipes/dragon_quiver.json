@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "quivermd:netherite_quiver"
+  },
+  "addition": {
+    "item": "minecraft:dragon_breath"
+  },
+  "result": {
+    "item": "quivermd:dragon_quiver"
+  }
+}

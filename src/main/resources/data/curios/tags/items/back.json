@@ -1,0 +1,11 @@
+{
+  "replaces": "false",
+  "values": [
+    "quivermd:leather_quiver",
+    "quivermd:iron_quiver",
+    "quivermd:golden_quiver",
+    "quivermd:diamond_quiver",
+    "quivermd:netherite_quiver",
+    "quivermd:dragon_quiver"
+  ]
+}

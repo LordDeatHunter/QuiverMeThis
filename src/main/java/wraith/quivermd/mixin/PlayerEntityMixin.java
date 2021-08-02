@@ -5,12 +5,15 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.RangedWeaponItem;
+import net.minecraft.nbt.NbtCompound;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import wraith.quivermd.QuiverMD;
+import wraith.quivermd.compatibility.Curios.CuriosCompat;
 import wraith.quivermd.item.QuiverItem;
 import wraith.quivermd.mixin_interfaces.IItemStack;
 
@@ -23,6 +26,19 @@ public class PlayerEntityMixin {
     public void getArrowType(ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         if (!(stack.getItem() instanceof RangedWeaponItem)) {
             return;
+        }
+        if (QuiverMD.isCuriosLoaded()) {
+            ItemStack quiverStack = CuriosCompat.checkForQuiver((PlayerEntity)(Object)this);
+            if (quiverStack != null && quiverStack.getItem() instanceof QuiverItem) {
+                int storedAmount = QuiverItem.getStoredAmount(quiverStack);
+                if (storedAmount > 0) {
+                    ItemStack arrowStack = new ItemStack(Items.ARROW, storedAmount);
+                    ((IItemStack)(Object)arrowStack).setQuiverStack(quiverStack);
+                    cir.setReturnValue(arrowStack);
+                    cir.cancel();
+                    return;
+                }
+            }
         }
         for (int i = 0; i < inventory.size(); ++i) {
             ItemStack currentStack = inventory.getStack(i);

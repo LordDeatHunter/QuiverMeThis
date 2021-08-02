@@ -7,6 +7,7 @@ import wraith.quivermd.QuiverMDItemGroup;
 import wraith.quivermd.Utils;
 import wraith.quivermd.item.QuiverItem;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class ItemRegistry {
@@ -34,6 +35,10 @@ public class ItemRegistry {
         register("diamond_quiver", new QuiverItem(800, new FabricItemSettings().group(QuiverMDItemGroup.ITEM_GROUP)));
         register("netherite_quiver", new QuiverItem(1000, new FabricItemSettings().group(QuiverMDItemGroup.ITEM_GROUP)));
         register("dragon_quiver", new QuiverItem(1200, new FabricItemSettings().group(QuiverMDItemGroup.ITEM_GROUP)));
+    }
+
+    public static Collection<Item> getItems() {
+        return ITEMS.values();
     }
 
 }

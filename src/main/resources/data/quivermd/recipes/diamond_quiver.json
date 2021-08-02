@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# D",
+    "DQD",
+    " D "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "Q": {
+      "item": "quivermd:golden_quiver"
+    }
+  },
+  "result": {
+    "item": "quivermd:diamond_quiver",
+    "count": 1
+  }
+}

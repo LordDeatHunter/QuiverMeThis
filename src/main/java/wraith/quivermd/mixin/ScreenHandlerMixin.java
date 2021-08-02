@@ -27,10 +27,10 @@ public abstract class ScreenHandlerMixin {
     @Inject(method = "onSlotClick", at = @At("HEAD"), cancellable = true)
     public void onSlotClick(int screenStackIndex, int button, SlotActionType actionType, PlayerEntity player, CallbackInfoReturnable<ItemStack> cir) {
         ItemStack cursorStack = player.inventory.getCursorStack();
-        if (cursorStack.isEmpty()) {
+        if (cursorStack.isEmpty() || screenStackIndex < 0) {
             return;
         }
-        if (screenStackIndex >= 0 && cursorStack.getItem() == Items.ARROW) {
+        if (cursorStack.getItem() == Items.ARROW) {
             ItemStack selectedStack = slots.get(screenStackIndex).getStack();
             if (!(selectedStack.getItem() instanceof QuiverItem)) {
                 return;
@@ -47,11 +47,12 @@ public abstract class ScreenHandlerMixin {
             cir.cancel();
         }
         else if (cursorStack.getItem() instanceof QuiverItem && button == 1) {
+            Slot slot = slots.get(screenStackIndex);
             int amount = QuiverItem.getStoredAmount(cursorStack);
             if (amount <= 0) {
                 return;
             }
-            ItemStack selectedStack = slots.get(screenStackIndex).getStack();
+            ItemStack selectedStack = slot.getStack();
             int oldCount;
             int newCount;
             if (selectedStack.isEmpty()) {
@@ -68,7 +69,10 @@ public abstract class ScreenHandlerMixin {
                 return;
             }
             ItemStack arrowStack = new ItemStack(Items.ARROW, newCount);
-            slots.get(screenStackIndex).setStack(arrowStack);
+            if (!slot.canInsert(arrowStack)) {
+                return;
+            }
+            slot.setStack(arrowStack);
             QuiverItem.decrementStoredArrows(cursorStack, newCount - oldCount);
 
             sendContentUpdates();

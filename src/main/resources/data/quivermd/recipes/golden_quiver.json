@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# G",
+    "GQG",
+    " G "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "Q": {
+      "item": "quivermd:iron_quiver"
+    }
+  },
+  "result": {
+    "item": "quivermd:golden_quiver",
+    "count": 1
+  }
+}

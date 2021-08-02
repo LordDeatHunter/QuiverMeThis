@@ -12,12 +12,26 @@ group = project.maven_group
 
 repositories {
 	maven { url = "https://www.cursemaven.com" }
+	maven {
+		url = "https://maven.theillusivec4.top/"
+	}
+	maven {
+		name = 'Ladysnake Mods'
+		url = 'https://ladysnake.jfrog.io/artifactory/mods'
+	}
+	maven { url "https://jitpack.io" }
 }
 dependencies {
 
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_version}")
+	modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cardinal_version}")
+	modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-world:${project.cardinal_version}")
+	modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-chunk:${project.cardinal_version}")
+	modImplementation "top.theillusivec4.curios:curios-fabric:${project.curios_version}"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
